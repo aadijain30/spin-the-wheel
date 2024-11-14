@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Wheel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .wheel-container {
+            position: relative;
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid #000;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .wheel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transition: transform 4s ease-out;
+        }
+
+        .wheel-section {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .wheel-section:nth-child(1) {
+            background-color: #ff5733; /* Red */
+            transform: rotate(0deg);
+        }
+
+        .wheel-section:nth-child(2) {
+            background-color: #33c4ff; /* Blue */
+            transform: rotate(90deg);
+        }
+
+        .wheel-section:nth-child(3) {
+            background-color: #33ff57; /* Green */
+            transform: rotate(180deg);
+        }
+
+        .wheel-section:nth-child(4) {
+            background-color: #ff33a1; /* Pink */
+            transform: rotate(270deg);
+        }
+
+        .wheel-section div {
+            transform: rotate(-90deg);
+        }
+
+        .spin-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .spin-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Spin the Wheel for a Prize!</h1>
+    
+    <div class="wheel-container">
+        <div class="wheel" id="wheel">
+            <div class="wheel-section" style="transform: rotate(0deg)">
+                <div>Keychain</div>
+            </div>
+            <div class="wheel-section" style="transform: rotate(90deg)">
+                <div>Batch</div>
+            </div>
+            <div class="wheel-section" style="transform: rotate(180deg)">
+                <div>T-Shirt</div>
+            </div>
+            <div class="wheel-section" style="transform: rotate(270deg)">
+                <div>Band</div>
+            </div>
+        </div>
+    </div>
+
+    <button class="spin-button" onclick="spinWheel()">Spin the Wheel!</button>
+
+    <script>
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            const randomDeg = Math.floor(Math.random() * 360) + 1800; // random degrees for a few full spins
+            wheel.style.transform = `rotate(${randomDeg}deg)`;
+        }
+    </script>
+
+</body>
+</html>
